@@ -13,9 +13,11 @@ class ViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var hoodie: UILabel!
     @IBOutlet weak var inputField: UITextField!
     
+    let someLabel = UILabel()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        let someLabel = UILabel()
+        
         someLabel.translatesAutoresizingMaskIntoConstraints = false
         someLabel.text = "NEW NEW shit"
         
@@ -30,6 +32,18 @@ class ViewController: UIViewController, UITextFieldDelegate {
         
         // associates text field with delegate object (this class)
         inputField.delegate = self
+        
+        let newButton = UIButton()
+        newButton.frame = CGRect(x: 100, y: 200, width: 100, height: 30)
+        view.addSubview(newButton)
+        
+        newButton.setTitleColor(.blue, for: .normal)
+        newButton.setTitle("You thought" , for: .normal)
+        newButton.addTarget(self, action: #selector(buttonWasTapped), for: .touchUpInside)
+    }
+    
+    @objc func buttonWasTapped(){
+        someLabel.text = "NAH"
     }
 
     @IBAction func buttonTapped(_ sender: Any) {
